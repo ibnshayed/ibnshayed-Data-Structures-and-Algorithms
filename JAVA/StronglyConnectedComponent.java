@@ -1,7 +1,6 @@
-package main;
-
-import java.util.*;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class StronglyConnectedComponent
 {

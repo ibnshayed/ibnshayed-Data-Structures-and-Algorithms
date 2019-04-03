@@ -1,9 +1,5 @@
-package main;
-
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-
 
 
 public class Dijkstra {
