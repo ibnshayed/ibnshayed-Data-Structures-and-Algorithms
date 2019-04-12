@@ -47,16 +47,16 @@ public class BellmanFord {
                 }
             }
 
-            if(changeValue == 0) {
-                break;
-            }
-            if(k == order.length - 1 && changeValue > 0) {
-                System.out.println("This Graph has negetive value on edge.");
-                break;
-            }
+                if(changeValue == 0) {
+                    break;
+                }
+                if(k == order.length - 1 && changeValue > 0) {
+                    System.out.println("This Graph has negetive value on edge.");
+                    break;
+                }
         }
 
-        }
+    }
 
 
 
