@@ -38,7 +38,6 @@ public class Dijkstra {
 
         while (!priorityQueue.isEmpty()){
             currentNode = priorityQueue.remove();
-
             if(!visit[currentNode]){
                 visit[currentNode] = true;
                 for(Integer x : adjLinedList[currentNode]){
@@ -46,7 +45,6 @@ public class Dijkstra {
                     tempCost = cost[currentNode] + costBetweenNode[currentNode][x];
                     if(tempCost < cost[x])
                         cost[x] = tempCost;
-
 
                 }
 

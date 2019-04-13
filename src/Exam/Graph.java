@@ -19,38 +19,39 @@ class Graph
             adj[i] = new LinkedList();
     }
 
+
     void addEdge(int v, int w)
     {
         adj[v].add(w); // Add w to v's list.
         adj[w].add(v); //Add v to w's list
     }
 
-    void APUtil(int u, boolean visited[], int disc[],
+    void DFS(int source, boolean visited[], int disc[],
                 int low[], int parent[], boolean ap[])
     {
 
         int children = 0;
-        visited[u] = true;
-        disc[u] = low[u] = ++time;
+        visited[source] = true;
+        disc[source] = low[source] = ++time;
 
-        for (Integer v : adj[u])
+        for (Integer child : adj[source])
         {
-            if (!visited[v])
+            if (!visited[child])
             {
                 children++;
-                parent[v] = u;
-                APUtil(v, visited, disc, low, parent, ap);
+                parent[child] = source;
+                DFS(child, visited, disc, low, parent, ap);
 
-                low[u] = Math.min(low[u], low[v]);
-                if (parent[u] == NIL && children > 1)
-                    ap[u] = true;
+                low[source] = Math.min(low[source], low[child]);
+                if (parent[source] == NIL && children > 1)
+                    ap[source] = true;
 
-                if (parent[u] != NIL && low[v] >= disc[u])
-                    ap[u] = true;
+                if (parent[source] != NIL && low[child] >= disc[source])
+                    ap[source] = true;
             }
 
-            else if (v != parent[u])
-                low[u] = Math.min(low[u], disc[v]);
+            else if (child != parent[source])
+                low[source] = Math.min(low[source], disc[child]);
         }
     }
 
@@ -62,6 +63,7 @@ class Graph
         int parent[] = new int[V];
         boolean ap[] = new boolean[V];
 
+
         for (int i = 0; i < V; i++)
         {
             parent[i] = NIL;
@@ -69,9 +71,10 @@ class Graph
             ap[i] = false;
         }
 
-        for (int i = 0; i < V; i++)
-            if (visited[i] == false)
-                APUtil(i, visited, disc, low, parent, ap);
+        int source = 0;
+        DFS(source, visited, disc, low, parent, ap);
+
+
 
         for (int i = 0; i < V; i++)
             if (ap[i] == true)

@@ -15,7 +15,9 @@ public class LongestCommonSubsequence {
                     L[i][j] = L[i-1][j-1] + 1;
                 else
                     L[i][j] = Math.max(L[i - 1][j - 1],Math.max(L[i-1][j], L[i][j-1]));
+                System.out.print(L[i][j] + " ");
             }
+            System.out.println();
         }
         return L[m][n];
     }
